@@ -109,7 +109,7 @@
     </script>
   </head>
   <body class="bg-body-tertiary">   
-<main class="container">
+<main class="container"> 
     <?php require($html.".php") ?>
 </main>
 </body>

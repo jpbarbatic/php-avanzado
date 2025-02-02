@@ -1,5 +1,16 @@
 <div class="container-fluid">
     <h1>Envía un correo con PHP</h1>
+        <?php if(isset($_SESSION['error'])):?>
+    <div class="alert alert-danger" role="alert">
+      <?php echo $_SESSION['error'] ?>
+    </div>    
+    <?php endif; ?>
+    
+    <?php if(isset($_SESSION['ok'])):?>
+    <div class="alert alert-success" role="alert">
+      <?php echo $_SESSION['ok'] ?>
+    </div>    
+    <?php endif; ?>  
 	<div class="row">
 		<div class="col-md-12">
 			<form role="form" action="enviar.php" method="post">

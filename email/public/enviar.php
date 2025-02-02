@@ -1,6 +1,7 @@
 <?php
 require('../config.php');
-require("../utilidades/email.php");
+require("../librerias/email.php");
+session_start();
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
@@ -9,5 +10,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $mensaje=$_REQUEST['mensaje'];
 
     $html=crear_mensaje_plantilla('../plantillas/easter.php', ['usuario'=>'jpbarba']);
-    enviar_mail($email, $asunto, $mensaje);
+    if(enviar_mail($email, $asunto, $mensaje))
+    {
+      $_SESSION['ok']='Mensaje enviado correctamente';
+    }else
+    {
+      $_SESSION['error']='Se ha producido un error';
+    }   
+    
+    header('Location: index.php');
 }
