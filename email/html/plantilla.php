@@ -110,7 +110,7 @@
   </head>
   <body class="bg-body-tertiary">   
 <main class="container">
-    <?php require("html/".$html.".php") ?>
+    <?php require($html.".php") ?>
 </main>
 </body>
 </html>
