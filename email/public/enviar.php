@@ -1,6 +1,6 @@
 <?php
-require('config.php');
-require("utilidades/email.php");
+require('../config.php');
+require("../utilidades/email.php");
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
@@ -8,6 +8,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $asunto=$_REQUEST['asunto'];
     $mensaje=$_REQUEST['mensaje'];
 
-    $html=crear_mensaje_plantilla('plantillas/easter.php', ['usuario'=>'jpbarba']);
+    $html=crear_mensaje_plantilla('../plantillas/easter.php', ['usuario'=>'jpbarba']);
     enviar_mail($email, $asunto, $mensaje);
 }
