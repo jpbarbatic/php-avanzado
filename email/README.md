@@ -14,7 +14,7 @@ La librería permite usar plantillas (altas de usuarios, pedidos, etc), de forma
     $asunto=$_REQUEST['asunto'];
     $mensaje=$_REQUEST['mensaje'];
 
-    //$mensaje=crear_mensaje_plantilla('../plantillas/alta_usuario.php', ['usuario'=>'jpbarba']);
+    //$mensaje=crear_mensaje_plantilla('../plantillas/alta_usuario.php', ['usuario'=>'pepeitor']);
     if(enviar_mail($email, $asunto, $mensaje))
     {
       $_SESSION['ok']='Mensaje enviado correctamente';
