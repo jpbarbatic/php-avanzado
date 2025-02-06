@@ -22,9 +22,9 @@ function enviar_mail($destinatario, $asunto = '', $mensaje = '', $adjuntos = nul
     try {
         // Configure PHPMailer
         $mail->isSMTP();
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->SMTPAuth = SMTP_AUTH;
+        $mail->SMTPSecure = SMTP_SECURE;
+        $mail->Port = SMTP_PORT;
 
         // Configure SMTP Server
         $mail->Host = SMTP_SERVER;
@@ -37,11 +37,13 @@ function enviar_mail($destinatario, $asunto = '', $mensaje = '', $adjuntos = nul
         $mail->Subject = $asunto;
         $mail->isHTML(true);
         $mail->Body = $mensaje;
+        
         if (isset($adjuntos)) {
             foreach ($adjuntos as $adjunto) {
                 $mail->AddAttachment($adjunto['path'], $adjunto['nombre']);
             }
         }
+        
         // send mail
         $mail->Send();
         return true;

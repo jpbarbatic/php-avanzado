@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $asunto=$_REQUEST['asunto'];
     $mensaje=$_REQUEST['mensaje'];
 
-    $html=crear_mensaje_plantilla('../plantillas/easter.php', ['usuario'=>'jpbarba']);
+    //$mensaje=crear_mensaje_plantilla('../plantillas/alta_usuario.php', ['usuario'=>'jpbarba']);
     if(enviar_mail($email, $asunto, $mensaje))
     {
       $_SESSION['ok']='Mensaje enviado correctamente';
