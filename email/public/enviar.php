@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $asunto=$_REQUEST['asunto'];
     $mensaje=$_REQUEST['mensaje'];
 
-    //$mensaje=crear_mensaje_plantilla('../plantillas_correo/alta_usuario.php', ['usuario'=>'jpbarba']);
+    //$mensaje=crear_mensaje_plantilla('../plantillas_correo/alta_usuario.php', ['usuario'=>'pepeitor']);
     if(enviar_mail($email, $asunto, $mensaje)){
       $_SESSION['ok']='Mensaje enviado correctamente';
     }else{
