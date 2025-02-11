@@ -8,8 +8,8 @@ require ('phpmail/src/Exception.php');
 
 function crear_mensaje_plantilla($plantilla, $datos)
 {
-    ob_start();
     extract($datos);
+    ob_start();
     include $plantilla;
     $html = ob_get_contents();
     ob_end_clean();
