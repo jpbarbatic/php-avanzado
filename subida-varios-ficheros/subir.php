@@ -1,13 +1,14 @@
 <?php
-
-function multiplesFiles($files)
+// Comprobamos que existe $_FILES y no está vacía
+if(isset($_FILES) and !empty($_FILES)){
+  foreach($_FILES['fotos']['tmp_name'] as $i=>$name)
+  {
+    $destino=__DIR__."/imagenes/".$_FILES['fotos']['name'][$i];
+    echo "<p>Copiando $name a $destino</p>";
+    copy($name, $destino);
+  }
+}else
 {
-	foreach($files as $key => $all ){
-		foreach( $all as $i => $val ){
-			$new[$i][$key] = $val;    
-		}    
-	}
-	return $new;
+  echo "<p>No hay ficheros</p>";
 }
-	
-print_r(multiplesFiles($_FILES['fotos']));
+
