@@ -21,7 +21,7 @@ define('DS_MERCHANT_MERCHANTURL', 'www.miempresa.com');
 define('DS_MERCHANT_CURRENCY', '978');
 define('DS_MERCHANT_CONSUMERLANGUAGE', '001');
 
-define('DS_MERCHANT_URLOK', ROOT_URL.'/estadoPago.php');
-define('DS_MERCHANT_URLKO', ROOT_URL.'/estadoPago.php');
+define('DS_MERCHANT_URLOK', '/estadoPago.php');
+define('DS_MERCHANT_URLKO', '/estadoPago.php');
 
 ?>

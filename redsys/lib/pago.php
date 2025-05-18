@@ -1,7 +1,7 @@
 <?php
 require('apiRedsys.php');
 
-function realizar_pago($importe, $concepto, $id_pedido)
+function realizar_pago($importe, $concepto, $id_pedido, $urlok, $urlko)
 {
 	$tpv=new RedsysAPI;
 
@@ -11,8 +11,8 @@ function realizar_pago($importe, $concepto, $id_pedido)
 	$tpv->setParameter("DS_MERCHANT_CURRENCY", DS_MERCHANT_CURRENCY);
 	$tpv->setParameter("DS_MERCHANT_TRANSACTIONTYPE", 0);
 	$tpv->setParameter("DS_MERCHANT_TERMINAL", DS_MERCHANT_TERMINAL);
-	$tpv->setParameter("DS_MERCHANT_URLOK", DS_MERCHANT_URLOK);
-	$tpv->setParameter("DS_MERCHANT_URLKO", DS_MERCHANT_URLOK);
+	$tpv->setParameter("DS_MERCHANT_URLOK", $urlok);
+	$tpv->setParameter("DS_MERCHANT_URLKO", $urlko);
 	$tpv->setParameter("DS_MERCHANT_MERCHANTNAME", DS_MERCHANT_MERCHANTNAME);
 	$tpv->setParameter("DS_MERCHANT_MERCHANTURL", DS_MERCHANT_MERCHANTURL);
 	$tpv->setParameter("DS_MERCHANT_PRODUCTDESCRIPTION", $concepto);
