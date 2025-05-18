@@ -1,0 +1,11 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_US\n"
+
+msgid "Hola, Mundo!"
+msgstr "Hello, World!"
+
+msgid "Bienvenido a mi sitio web"
+msgstr "Welcome to my website"
+
