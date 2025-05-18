@@ -28,13 +28,18 @@ function comprobar_pago()
 	$tpv=new RedsysAPI;
 	
 	$version = $_GET["Ds_SignatureVersion"];
-	$datos = $_GET["Ds_MerchantParameters"];
+	$params = $_GET["Ds_MerchantParameters"];
 	$signatureRecibida = $_GET["Ds_Signature"];	
 
-	$decodec = $tpv->decodeMerchantParameters($datos);	
+	$decodec = $tpv->decodeMerchantParameters($params);
 
-	$firma = $tpv->createMerchantSignatureNotif(DS_SIGNATURE,$datos);
+	$firma = $tpv->createMerchantSignatureNotif(DS_SIGNATURE, $params);
 	
-	return $firma === $signatureRecibida;
+	if($firma === $signatureRecibida)
+	{
+	  return $tpv->getParameter('Ds_Response')==='0000';
+	}else{
+	  return false;
+	}
 }
 
