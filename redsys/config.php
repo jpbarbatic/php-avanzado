@@ -21,5 +21,3 @@ define('DS_MERCHANT_CONSUMERLANGUAGE', '001');
 
 define('DS_MERCHANT_URLOK', '/estadoPago.php');
 define('DS_MERCHANT_URLKO', '/estadoPago.php');
-
-
