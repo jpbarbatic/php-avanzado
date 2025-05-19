@@ -21,3 +21,13 @@ define('DS_MERCHANT_CONSUMERLANGUAGE', '001');
 
 define('DS_MERCHANT_URLOK', '/estadoPago.php');
 define('DS_MERCHANT_URLKO', '/estadoPago.php');
+
+// Configuración de email
+define('SMTP_SERVER', 'smtp.gmail.com');
+define('SMTP_PORT', 465);
+define('SMTP_AUTH', true);
+define('SMTP_SECURE', 'ssl');
+define('MAIL_USERNAME', '');      // Rellenar
+define('MAIL_USER', '');          // Rellenar
+define('MAIL_PASS', '');          // Rellenar
+define('MAIL_DESTINATARIO', '');  // Rellenar
