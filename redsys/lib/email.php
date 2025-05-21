@@ -23,6 +23,7 @@ function enviar_mail($destinatario, $asunto = '', $mensaje = '', $adjuntos = nul
     try {
         // Configure PHPMailer
         $mail->isSMTP();
+        $mail->CharSet = "utf-8";
         $mail->SMTPAuth = SMTP_AUTH;
         $mail->SMTPSecure = SMTP_SECURE;
         $mail->Port = SMTP_PORT;

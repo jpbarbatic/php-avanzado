@@ -1,4 +1,4 @@
-<div style="width: 300px; margin: 0 auto; text-align: center;">
+<div style="width: 300px; margin: 0 auto; text-align: center; margin-top:100px;">
 <h1>Realizar pedido</h1>
 
 <form action="realizarPago.php" method="post">

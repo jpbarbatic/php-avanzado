@@ -16,23 +16,33 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   // Si la notificación es correcta
   if($params){     
      // Obtenemos los campos que van a hacer falta para generar el CVS y el envío del correo
-    $importe=number_format(floatval($params['Ds_Amount'])/100, 2, ',');
-    $id_pedido=$params['Ds_Order'];
-    $fecha=$params['Ds_Date'];
-    $hora=$params['Ds_Hour'];
-    $num_tarjeta=$params['Ds_Card_Number'];
-    $resultado_pago=$params['Ds_Response_Description'];
+    $transaccion['importe']=number_format(floatval($params['Ds_Amount'])/100, 2, ',');
+    $transaccion['id_pedido']=$params['Ds_Order'];
+    $transaccion['fecha']=urldecode($params['Ds_Date']);
+    $transaccion['hora']=urldecode($params['Ds_Hour']);
+    $transaccion['num_tarjeta']=$params['Ds_Card_Number'];
+    $transaccion['resultado_pago']=urldecode($params['Ds_Response_Description']);
     
     $f='../pagos.csv';
 
     print_r($params);
+    
     // Si el fichero no existe o si existe y está vacío añadimos la cabecera
-    if(!file_exists($f) or (file_exists($f) and filesize($f)==0))    {
+    if(!file_exists($f) or (file_exists($f) and filesize($f)==0)){
       file_put_contents($f, "Fecha;Hora;Id Pedido;Importe;Núm. tarjeta;Estado\n", FILE_APPEND);
     }
-
-    file_put_contents($f, urldecode(implode(';',array_values([$fecha,$hora, $id_pedido, $importe, $num_tarjeta,$resultado_pago])))."\n", FILE_APPEND);
     
-    enviar_mail('jpbarba@gmail.com', 'Pago realizado', 'Se ha realizado un pago de '.$importe);
+    $linea='';
+    $linea.=$transaccion['fecha'].";";
+    $linea.=$transaccion['hora'].";";
+    $linea.=$transaccion['id_pedido'].";";
+    $linea.=$transaccion['num_tarjeta'].";";
+    $linea.=$transaccion['resultado_pago']."\n";
+
+    file_put_contents($f, $linea, FILE_APPEND);
+    
+    // Enviamos un correo 
+    $html=crear_mensaje_plantilla('../vistas/email.html.php', $transaccion);
+    enviar_mail(MAIL_DESTINATARIO, 'Nueva transacción', $html);
   }
 }
