@@ -1,5 +1,5 @@
 <?php
-
+require('../config.php');
 require('../lib/pagos.php');
 
 if ($_POST['realizar_pedido']) {

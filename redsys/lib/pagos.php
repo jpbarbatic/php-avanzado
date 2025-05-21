@@ -1,5 +1,4 @@
 <?php
-require('../config.php');
 require('apiRedsys.php');
 require('utils.php');
 
