@@ -1,5 +1,5 @@
 <div style="text-align:center; margin-top:100px;">
-  <?php if($params['Ds_Response']==='0000'):?>
+  <?php if($transaccion['estado']):?>
   <h1>Pago realizado correctamente</h1>
   <?php else: ?>
   <h1>Pago anulado</h1>

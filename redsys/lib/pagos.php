@@ -30,17 +30,29 @@ function realizar_pago($importe, $concepto, $id_pedido)
   return ['params' => $params, 'signature' => $signature];
 }
 
-function notificacion_pago_cliente($version, $params, $signatureRecibida)
+function comprobar_firma($version, $params, $signatureRecibida)
 {
   $tpv = new RedsysAPI;
   $decodec = $tpv->decodeMerchantParameters($params);
   $firma = $tpv->createMerchantSignatureNotif(DS_SIGNATURE, $params);
 
   if ($firma === $signatureRecibida) {
-    return $tpv->vars_pay;
-  } else {
-    return false;
+    $transaccion['importe'] = number_format(floatval($tpv->getParameter('Ds_Amount')) / 100, 2, ',');
+    $transaccion['id_pedido'] = $tpv->getParameter('Ds_Order');
+    $transaccion['fecha'] = urldecode($tpv->getParameter('Ds_Date'));
+    $transaccion['hora'] = urldecode($tpv->getParameter('Ds_Hour'));
+    $transaccion['num_tarjeta'] = $tpv->getParameter('Ds_Card_Number');
+    $transaccion['resultado_pago'] = urldecode($tpv->getParameter('Ds_Response_Description'));
+    $transaccion['estado']=$tpv->getParameter('Ds_Response')==='0000';
+    return $transaccion;
+  }else{
+    false;
   }
+}
+
+function notificacion_pago_cliente($version, $params, $signatureRecibida)
+{
+  return comprobar_firma($version, $params, $signatureRecibida);
 }
 
 function actualizar_log_pagos($transaccion)
@@ -65,21 +77,8 @@ function actualizar_log_pagos($transaccion)
 
 function notificacion_pago_web($version, $params, $signatureRecibida)
 {
-  $tpv = new RedsysAPI;
-  $decodec = $tpv->decodeMerchantParameters($params);
-  $firma = $tpv->createMerchantSignatureNotif(DS_SIGNATURE, $params);
-
-  if ($firma === $signatureRecibida) {
-
-    $params = $tpv->vars_pay;
-    // Obtenemos los campos que van a hacer falta para generar el CVS y el envío del correo
-    $transaccion['importe'] = number_format(floatval($params['Ds_Amount']) / 100, 2, ',');
-    $transaccion['id_pedido'] = $params['Ds_Order'];
-    $transaccion['fecha'] = urldecode($params['Ds_Date']);
-    $transaccion['hora'] = urldecode($params['Ds_Hour']);
-    $transaccion['num_tarjeta'] = $params['Ds_Card_Number'];
-    $transaccion['resultado_pago'] = urldecode($params['Ds_Response_Description']);
-
+  $transaccion=comprobar_firma($version, $params, $signatureRecibida);
+  if ($transaccion) {
     // Actualizamos fichero de logs de pagos  
     actualizar_log_pagos($transaccion);
 
