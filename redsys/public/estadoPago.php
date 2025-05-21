@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		exit;
 	}
 
-	$transaccion = notificacion_pago_cliente($version, $params, $signatureRecibida);
+	$transaccion = comprobar_firma($version, $params, $signatureRecibida);
 
 	$titulo = "Resultado del pago";
 	$vista = 'notificacionPago';

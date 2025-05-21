@@ -50,11 +50,6 @@ function comprobar_firma($version, $params, $signatureRecibida)
   }
 }
 
-function notificacion_pago_cliente($version, $params, $signatureRecibida)
-{
-  return comprobar_firma($version, $params, $signatureRecibida);
-}
-
 function actualizar_log_pagos($transaccion)
 {
   $f = '../pagos.csv';
