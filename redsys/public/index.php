@@ -1,5 +1,4 @@
 <?php
-$titulo="Realizar pedido";
-$vista='formularioPedido';
+$titulo = "Realizar pedido";
+$vista = 'formularioPedido';
 require('../vistas/plantilla.html.php');
-?>

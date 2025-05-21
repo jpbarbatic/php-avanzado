@@ -2,9 +2,9 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-require ('phpmail/src/PHPMailer.php');
-require ('phpmail/src/SMTP.php');
-require ('phpmail/src/Exception.php');
+require('phpmail/src/PHPMailer.php');
+require('phpmail/src/SMTP.php');
+require('phpmail/src/Exception.php');
 
 function crear_mensaje_plantilla($plantilla, $datos)
 {
@@ -39,13 +39,13 @@ function enviar_mail($destinatario, $asunto = '', $mensaje = '', $adjuntos = nul
         $mail->Subject = $asunto;
         $mail->isHTML(true);
         $mail->Body = $mensaje;
-        
+
         if (isset($adjuntos)) {
             foreach ($adjuntos as $adjunto) {
                 $mail->AddAttachment($adjunto['path'], $adjunto['nombre']);
             }
         }
-        
+
         // send mail
         $mail->Send();
         return true;
