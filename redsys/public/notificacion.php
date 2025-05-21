@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   $signatureRecibida = isset($_POST["Ds_Signature"]) ? $_POST["Ds_Signature"] : null;
 
   if($version==null or $params==null or $signatureRecibida==null){
-    return false;
+    exit;
   }
 
   $params=notificacion_pago_web($version, $params, $signatureRecibida);
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
     $f='../pagos.csv';
 
-    print_r($params);
+    //print_r($params);
     
     // Si el fichero no existe o si existe y está vacío añadimos la cabecera
     if(!file_exists($f) or (file_exists($f) and filesize($f)==0)){

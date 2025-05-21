@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='GET')
 	
 	if($version==null or $params==null or $signatureRecibida==null)
 	{
-	  return false;
+	  exit;
 	}
 	
   $params=notificacion_pago_cliente($version, $params, $signatureRecibida);
