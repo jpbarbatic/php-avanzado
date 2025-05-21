@@ -1,5 +1,5 @@
 <?php
-require('../lib/pago.php');
+require('../lib/pagos.php');
 
 if($_SERVER['REQUEST_METHOD']=='GET')
 {
@@ -13,7 +13,6 @@ if($_SERVER['REQUEST_METHOD']=='GET')
 	}
 	
   $params=notificacion_pago_cliente($version, $params, $signatureRecibida);
-  $res=$params['Ds_Response']==='0000';
   
   $titulo="Resultado del pago";
   $vista='notificacionPago';

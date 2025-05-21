@@ -1,6 +1,6 @@
 <?php
 
-require('../lib/pago.php');
+require('../lib/pagos.php');
 
 if($_POST['realizar_pedido']){
   $id=$_POST['id_pedido'];
