@@ -17,8 +17,8 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
 
 - https://pagosonline.redsys.es/desarrolladores-inicio/documentacion-tipos-de-integracion/desarrolladores-redireccion/
 
-´´´mermaid
-    sequenceDiagram
+```mermaid
+sequenceDiagram
     participant dotcom
     participant iframe
     participant viewscreen
@@ -28,7 +28,7 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
     iframe->>dotcom: iframe ready
     dotcom->>iframe: set mermaid data on iframe
     iframe->>iframe: render mermaid
-´´´
+```
 
 ## Datos comercio de prueba
 
