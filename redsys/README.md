@@ -21,8 +21,8 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
 sequenceDiagram
     Cliente->>Web: realizarPago.php
     Web->>Redsys: https://sis.redsys.es/sis/realizarPago
-    Redsys->>Cliente: redirección
-    Cliente->>Web: estadoPago.php
+    Redsys->>+Cliente: redirección
+    Cliente->>-Web: estadoPago.php
     Redsys->>Web:notificacion.php
 ```
 
