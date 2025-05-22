@@ -74,6 +74,7 @@ function notificacion_pago_web($version, $params, $signatureRecibida)
 {
   $transaccion=comprobar_firma($version, $params, $signatureRecibida);
   if ($transaccion) {
+    
     // Actualizamos fichero de logs de pagos  
     actualizar_log_pagos($transaccion);
 

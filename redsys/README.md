@@ -17,6 +17,15 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
 
 - https://pagosonline.redsys.es/desarrolladores-inicio/documentacion-tipos-de-integracion/desarrolladores-redireccion/
 
+´´´mermaid
+sequenceDiagram
+    Alice->>+John: Hello John, how are you?
+    Alice->>+John: John, can you hear me?
+    John-->>-Alice: Hi Alice, I can hear you!
+    John-->>-Alice: I feel great!
+´´´
+
+## Datos comercio de prueba
 
 | Código de Comercio |  (FUC)	Terminal	|  Clave de firma SHA-256           |
 |--------------------|------------------|-----------------------------------|
@@ -31,4 +40,8 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
 
 - https://pagosonline.redsys.es/desarrolladores-inicio/integrate-con-nosotros/area-de-descargas-y-documentacion/
 
+
+## Entorno de administración
+
+- https://sis-t.redsys.es:25443/admincanales-web/index.jsp#/login?highlightTrialUser=true
 
