@@ -3,7 +3,7 @@ require('apiRedsys.php');
 require('email.php');
 require('utils.php');
 
-function realizar_pago($importe, $concepto, $id_pedido)
+function firmar_pago($importe, $concepto, $id_pedido)
 {
   $tpv = new RedsysAPI;
 
