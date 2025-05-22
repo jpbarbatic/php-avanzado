@@ -19,15 +19,11 @@ Para probar la notificación a la web, esta no tiene que estar en un servidor ac
 
 ```mermaid
 sequenceDiagram
-    participant dotcom
-    participant iframe
-    participant viewscreen
-    dotcom->>iframe: loads html w/ iframe url
-    iframe->>viewscreen: request template
-    viewscreen->>iframe: html & javascript
-    iframe->>dotcom: iframe ready
-    dotcom->>iframe: set mermaid data on iframe
-    iframe->>iframe: render mermaid
+    Cliente->>Web: realizarPago.php
+    Web->>Redsys: https://sis.redsys.es/sis/realizarPago
+    Redsys->>Cliente: redirección
+    Cliente->>Web: estadoPago.php
+    Redsys->>Web:notificacion.php
 ```
 
 ## Datos comercio de prueba
