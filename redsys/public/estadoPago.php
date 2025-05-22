@@ -13,7 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 	$transaccion = comprobar_firma($version, $params, $signatureRecibida);
 
-	$titulo = "Resultado del pago";
-	$vista = 'notificacionPago';
-	require('../vistas/plantilla.html.php');
+	if ($transaccion) {
+		$titulo = "Resultado del pago";
+		$vista = 'notificacionPago';
+		require('../vistas/plantilla.html.php');
+	}
 }

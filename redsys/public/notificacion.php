@@ -1,7 +1,6 @@
 <?php
 require('../config.php');
 require('../lib/pagos.php');
-require('../lib/email.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $version = isset($_POST["Ds_SignatureVersion"]) ? $_POST["Ds_SignatureVersion"] : null;
